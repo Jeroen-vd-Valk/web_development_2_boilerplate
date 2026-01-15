@@ -71,7 +71,7 @@ npm run build-storybook
 
 ### API Configuration
 
-The application uses environment variables for configuration. Create a `.env` file in the frontend root:
+The application uses environment variables for configuration. If you are using this outside a local environment and need to change config details, create a `.env` file in the frontend root:
 
 ```env
 # API Domain - Base URL for API requests
