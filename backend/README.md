@@ -14,7 +14,7 @@ backend/
 │       ├── Services/           # Business logic layer
 │       ├── Repositories/       # Data access layer
 │       ├── Models/             # Data models
-│       ├── Framework/          # Base controller class
+│       ├── Framework/          # Base controller class and other general framework code
 │       ├── Utils/              # Utility classes (JsonStore)
 │       └── data/               # JSON data storage
 ├── docker-compose.yml          # Docker services configuration

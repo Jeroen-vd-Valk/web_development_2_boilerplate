@@ -35,12 +35,23 @@ export default {
   setup(props, { emit }) {
     props = reactive(props);
     return {
-      classes: computed(() => ({
-        "storybook-button": true,
-        "storybook-button--primary": props.primary,
-        "storybook-button--secondary": !props.primary,
-        [`storybook-button--${props.size || "medium"}`]: true,
-      })),
+      classes: computed(() => {
+        const baseClasses = "inline-block cursor-pointer border-0 rounded-full font-bold leading-none font-sans bg-blue-500";
+        
+        const variantClasses = props.primary
+          ? "bg-[#555ab9] text-white"
+          : "bg-transparent text-gray-800 ring-1 ring-black/15";
+        
+        const sizeClasses = {
+          small: "px-4 py-2.5 text-xs",
+          medium: "px-5 py-2.5 text-sm",
+          large: "px-6 py-3 text-base",
+        };
+        
+        const size = props.size || "medium";
+        
+        return `${baseClasses} ${variantClasses} ${sizeClasses[size]}`;
+      }),
       style: computed(() => ({
         backgroundColor: props.backgroundColor,
       })),
@@ -52,35 +63,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.storybook-button {
-  display: inline-block;
-  cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-.storybook-button--primary {
-  background-color: #555ab9;
-  color: white;
-}
-.storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  background-color: transparent;
-  color: #333;
-}
-.storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
-}
-.storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
-}
-.storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
-}
-</style>
