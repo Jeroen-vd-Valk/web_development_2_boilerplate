@@ -1,6 +1,6 @@
 <?php
 
-// NOTE: we are using a simplified filed based storage for demo purposes
+// NOTE: we are using a simplified file based storage for demo purposes
 // For your assignment, you should use a database
 
 namespace App\Repositories;

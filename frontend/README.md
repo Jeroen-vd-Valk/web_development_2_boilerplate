@@ -1,4 +1,4 @@
-# Frontend 
+# Frontend
 
 A Vue 3 application built with Vite, Tailwind CSS, and Storybook, following atomic design principles.
 
@@ -85,7 +85,7 @@ The default API domain is `http://localhost`. Update this to match your backend 
 ### Using the Config
 
 ```javascript
-import config from '@/config';
+import config from "@/config";
 
 // Access API domain
 const apiDomain = config.apiDomain; // 'http://localhost'
@@ -96,19 +96,19 @@ const apiDomain = config.apiDomain; // 'http://localhost'
 The project includes a utility module for making API requests:
 
 ```javascript
-import { get, post, put, del } from '@/utils/api';
+import { get, post, put, del } from "@/utils/api";
 
 // GET request
-const response = await get('/articles');
+const response = await get("/articles");
 const articles = await response.json();
 
 // POST request
-const newArticle = await post('/articles', {
-  title: 'New Article',
-  author: 'John Doe',
-  category: 'Technology',
-  published: '2025-01-15',
-  content: 'Article content...'
+const newArticle = await post("/articles", {
+  title: "New Article",
+  author: "John Doe",
+  category: "Technology",
+  published: "2025-01-15",
+  content: "Article content...",
 });
 ```
 
@@ -171,25 +171,30 @@ Stories are automatically discovered from `src/**/*.stories.@(js|jsx|mjs|ts|tsx)
 The application includes a complete set of article-related components:
 
 ### Atoms
+
 - **Badge**: Category labels with variants
 - **DateDisplay**: Formatted date display
 - **Heading**: Semantic headings (h1-h6)
 - **Text**: Text with size, weight, and color options
 
 ### Molecules
+
 - **ArticleMeta**: Author and published date display
 - **CategoryBadge**: Category badge with color mapping
 
 ### Organisms
+
 - **ArticleCard**: Article preview card for lists
 - **ArticleDetail**: Full article view
 - **Header**: Site navigation header
 - **Footer**: Site footer with links
 
 ### Templates
+
 - **ArticleArchive**: Complete archive page layout
 
 ### Pages
+
 - **ArticleArchivePage**: Page that fetches and displays articles
 
 ## 📝 Development Guidelines
@@ -229,4 +234,3 @@ The application includes a complete set of article-related components:
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
 - [Storybook Documentation](https://storybook.js.org/)
 - [Atomic Design Methodology](https://atomicdesign.bradfrost.com/)
-

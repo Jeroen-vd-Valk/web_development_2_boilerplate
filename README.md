@@ -33,16 +33,19 @@ web_development_2_boilerplate/
 ### Backend Setup
 
 1. Navigate to the backend directory:
+
 ```bash
 cd backend
 ```
 
 2. Start Docker containers:
+
 ```bash
 docker-compose up
 ```
 
 3. Install PHP dependencies:
+
 ```bash
 docker-compose exec php composer install
 ```
@@ -54,16 +57,19 @@ For detailed backend documentation, see [backend/README.md](./backend/README.md)
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
+
 ```bash
 cd frontend
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
