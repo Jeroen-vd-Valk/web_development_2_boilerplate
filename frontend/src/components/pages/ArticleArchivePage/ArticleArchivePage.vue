@@ -3,16 +3,23 @@
     <!-- Loading State -->
     <div v-if="loading" class="min-h-screen flex items-center justify-center">
       <div class="text-center">
-        <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+        <div
+          class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"
+        ></div>
         <p class="text-gray-600">Loading articles...</p>
       </div>
     </div>
 
     <!-- Error State -->
-    <div v-else-if="error" class="min-h-screen flex items-center justify-center">
+    <div
+      v-else-if="error"
+      class="min-h-screen flex items-center justify-center"
+    >
       <div class="text-center max-w-md">
         <div class="text-red-600 text-5xl mb-4">⚠️</div>
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">Error Loading Articles</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">
+          Error Loading Articles
+        </h2>
         <p class="text-gray-600 mb-4">{{ error }}</p>
         <button
           @click="fetchArticles"
@@ -33,9 +40,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import ArticleArchive from '../../templates/ArticleArchive/ArticleArchive.vue';
-import { get } from '../../../utils/api.js';
+import { ref, onMounted } from "vue";
+import ArticleArchive from "../../templates/ArticleArchive/ArticleArchive.vue";
+import { get } from "../../../utils/api.js";
 
 const articles = ref([]);
 const loading = ref(true);
@@ -49,27 +56,20 @@ const fetchArticles = async () => {
   error.value = null;
 
   try {
-    const response = await get('/articles');
-    
+    const response = await get("/articles");
+
     if (!response.ok) {
-      throw new Error(`Failed to fetch articles: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `Failed to fetch articles: ${response.status} ${response.statusText}`,
+      );
     }
 
     const data = await response.json();
-    
-    // Handle both direct array and wrapped response formats
-    if (Array.isArray(data)) {
-      articles.value = data;
-    } else if (data.data && Array.isArray(data.data)) {
-      articles.value = data.data;
-    } else if (data.articles && Array.isArray(data.articles)) {
-      articles.value = data.articles;
-    } else {
-      throw new Error('Unexpected response format');
-    }
+    articles.value = data;
   } catch (err) {
-    console.error('Error fetching articles:', err);
-    error.value = err.message || 'Failed to load articles. Please try again later.';
+    console.error("Error fetching articles:", err);
+    error.value =
+      err.message || "Failed to load articles. Please try again later.";
     articles.value = [];
   } finally {
     loading.value = false;
@@ -83,7 +83,7 @@ const fetchArticles = async () => {
 const handleArticleClick = (articleId) => {
   // Navigate to article detail page
   // This can be implemented with Vue Router or your preferred routing solution
-  console.log('Article clicked:', articleId);
+  console.log("Article clicked:", articleId);
   // Example: router.push(`/articles/${articleId}`);
 };
 
