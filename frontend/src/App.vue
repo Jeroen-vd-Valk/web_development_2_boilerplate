@@ -8,7 +8,7 @@
 
 <script setup>
 // Import Vue functions
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUpdated } from 'vue'
 import UserCard from './components/UserCard.vue'
 
 // ============================================
@@ -47,6 +47,11 @@ onMounted(() => {
   console.log('Component loaded!')
   // This is where you'd typically load data from an API
 })
+
+onUpdated(() => {
+  console.log('Component updated! Count is now:', count.value)
+})
+
 </script>
 
 <template>
