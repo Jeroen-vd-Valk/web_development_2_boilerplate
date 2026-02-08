@@ -4,6 +4,7 @@
       v-for="stock in stocks"
       :key="stock.name"
       :stock="stock"
+      @buy="handleBuy"
     />
   </div>
 </template>
@@ -40,4 +41,11 @@ const gridClasses = computed(() => {
   }
   return columnClasses[props.columns] || columnClasses[1]
 })
+
+const handleBuy = (tickerSymbol) => {
+  const stock = props.stocks.find(s => s.name === tickerSymbol)
+  if (stock) {
+    alert(`Stock purchased: ${tickerSymbol} at $${stock.price.toFixed(2)}`)
+  }
+}
 </script>

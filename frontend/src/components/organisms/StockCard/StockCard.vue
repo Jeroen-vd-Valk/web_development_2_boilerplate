@@ -4,6 +4,12 @@
       <StockInfo :stock="stock" />
       <StockPrice :stock="stock" />
     </div>
+    <button
+      @click="emit('buy', stock.name)"
+      class="mt-3 w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors cursor-pointer"
+    >
+      Buy
+    </button>
   </div>
 </template>
 
@@ -20,4 +26,7 @@ const props = defineProps({
     }
   }
 })
+
+const emit = defineEmits(['buy'])
+
 </script>
