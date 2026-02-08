@@ -1,7 +1,7 @@
 <script setup>
-import ArticleArchivePage from './components/pages/ArticleArchivePage/ArticleArchivePage.vue'
+import StockTickerPage from './components/pages/StockTickerPage/StockTickerPage.vue'
 </script>
 
 <template>
-  <ArticleArchivePage />
+  <StockTickerPage />
 </template>

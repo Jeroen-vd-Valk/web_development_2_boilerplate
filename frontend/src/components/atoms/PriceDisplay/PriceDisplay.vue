@@ -1,6 +1,6 @@
 <template>
   <span :class="classes">
-    <slot />
+    ${{ formattedPrice }}
   </span>
 </template>
 
@@ -8,29 +8,31 @@
 import { computed } from 'vue'
 
 const props = defineProps({
+  price: {
+    type: Number,
+    required: true
+  },
   size: {
     type: String,
     default: 'base',
-    validator: (value) => ['xs', 'sm', 'base', 'lg', 'xl'].includes(value)
+    validator: (value) => ['sm', 'base', 'lg'].includes(value)
   },
   weight: {
     type: String,
-    default: 'normal',
+    default: 'semibold',
     validator: (value) => ['normal', 'medium', 'semibold', 'bold'].includes(value)
-  },
-  color: {
-    type: String,
-    default: 'gray-900'
   }
+})
+
+const formattedPrice = computed(() => {
+  return props.price.toFixed(2)
 })
 
 const classes = computed(() => {
   const sizeClasses = {
-    xs: 'text-xs',
     sm: 'text-sm',
     base: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-xl'
+    lg: 'text-lg'
   }
   
   const weightClasses = {
@@ -40,14 +42,6 @@ const classes = computed(() => {
     bold: 'font-bold'
   }
   
-  const colorClasses = {
-    'gray-900': 'text-gray-900',
-    'gray-700': 'text-gray-700',
-    'gray-500': 'text-gray-500',
-    'green-600': 'text-green-600',
-    'red-600': 'text-red-600'
-  }
-  
-  return `${sizeClasses[props.size]} ${weightClasses[props.weight]} ${colorClasses[props.color] || `text-${props.color}`}`
+  return `${sizeClasses[props.size]} ${weightClasses[props.weight]} text-gray-900`
 })
 </script>

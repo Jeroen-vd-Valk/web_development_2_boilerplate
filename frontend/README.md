@@ -18,11 +18,11 @@ src/
 ├── assets/           # Global styles and assets
 │   └── main.css      # Tailwind CSS import
 ├── components/       # Component library
-│   ├── atoms/        # Basic building blocks (Button, Badge, Text, etc.)
-│   ├── molecules/    # Simple component groups (ArticleMeta, CategoryBadge)
-│   ├── organisms/    # Complex components (ArticleCard, Header, Footer)
-│   ├── templates/    # Page-level layouts (ArticleArchive)
-│   └── pages/        # Specific page instances (ArticleArchivePage)
+│   ├── atoms/        # Basic building blocks (Button, Text, PriceDisplay, etc.)
+│   ├── molecules/    # Simple component groups (StockInfo, StockPrice)
+│   ├── organisms/    # Complex components (StockCard, StockList)
+│   ├── templates/    # Page-level layouts (StockTickerTemplate)
+│   └── pages/        # Specific page instances (StockTickerPage)
 ├── config.js         # Application configuration
 ├── utils/            # Utility functions
 │   └── api.js        # API request helpers
@@ -99,16 +99,14 @@ The project includes a utility module for making API requests:
 import { get, post, put, del } from "@/utils/api";
 
 // GET request
-const response = await get("/articles");
-const articles = await response.json();
+const response = await get("/stocks");
+const stocks = await response.json();
 
 // POST request
-const newArticle = await post("/articles", {
-  title: "New Article",
-  author: "John Doe",
-  category: "Technology",
-  published: "2025-01-15",
-  content: "Article content...",
+const newStock = await post("/stocks", {
+  name: "AAPL",
+  price: 150.25,
+  previousPrice: 150.25,
 });
 ```
 
@@ -116,11 +114,11 @@ const newArticle = await post("/articles", {
 
 ### Atomic Design Structure
 
-- **Atoms**: Basic building blocks (Button, Badge, Text, Heading, DateDisplay)
-- **Molecules**: Simple component groups (ArticleMeta, CategoryBadge)
-- **Organisms**: Complex components (ArticleCard, ArticleDetail, Header, Footer)
-- **Templates**: Page layouts (ArticleArchive)
-- **Pages**: Specific page instances (ArticleArchivePage)
+- **Atoms**: Basic building blocks (Button, Text, PriceDisplay, PriceChangeIndicator)
+- **Molecules**: Simple component groups (StockInfo, StockPrice)
+- **Organisms**: Complex components (StockCard, StockList)
+- **Templates**: Page layouts (StockTickerTemplate)
+- **Pages**: Specific page instances (StockTickerPage)
 
 ### Creating Components
 
@@ -166,36 +164,45 @@ Stories are automatically discovered from `src/**/*.stories.@(js|jsx|mjs|ts|tsx)
 - Interact with components using controls
 - View documentation generated from component props
 
-## 🎯 Article Components
+## 🎯 Stock Ticker Components
 
-The application includes a complete set of article-related components:
+The application includes a complete set of stock ticker components:
 
 ### Atoms
 
-- **Badge**: Category labels with variants
-- **DateDisplay**: Formatted date display
-- **Heading**: Semantic headings (h1-h6)
 - **Text**: Text with size, weight, and color options
+- **PriceDisplay**: Formatted price display with currency symbol
+- **PriceChangeIndicator**: Visual indicator (↑/↓) for price changes
 
 ### Molecules
 
-- **ArticleMeta**: Author and published date display
-- **CategoryBadge**: Category badge with color mapping
+- **StockInfo**: Stock name and price display
+- **StockPrice**: Price with change indicator
 
 ### Organisms
 
-- **ArticleCard**: Article preview card for lists
-- **ArticleDetail**: Full article view
-- **Header**: Site navigation header
-- **Footer**: Site footer with links
+- **StockCard**: Individual stock card displaying name, price, and change
+- **StockList**: Grid layout for displaying multiple stock cards
 
 ### Templates
 
-- **ArticleArchive**: Complete archive page layout
+- **StockTickerTemplate**: Complete stock ticker page layout with header
 
 ### Pages
 
-- **ArticleArchivePage**: Page that fetches and displays articles
+- **StockTickerPage**: Page that displays a list of stocks
+
+## 📊 Stock Data Format
+
+Stocks follow this format:
+
+```javascript
+{
+  name: 'AAPL',
+  price: 150.25,
+  previousPrice: 150.25
+}
+```
 
 ## 📝 Development Guidelines
 
