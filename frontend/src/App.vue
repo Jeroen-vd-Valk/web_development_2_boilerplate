@@ -1,7 +1,7 @@
 <script setup>
-import StockTickerPage from './components/pages/StockTickerPage/StockTickerPage.vue'
+// App component with router view
 </script>
 
 <template>
-  <StockTickerPage />
+  <router-view />
 </template>
