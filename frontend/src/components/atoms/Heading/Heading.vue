@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" :class="classes">
+  <component :is="tag" :class="classes + (isEmphasized ? ' italic': '')">
     <slot></slot>
   </component>
 </template>
@@ -18,6 +18,10 @@ const props = defineProps({
     default: 'auto',
     validator: (value) => ['auto', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'].includes(value),
   },
+  isEmphasized: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const tag = computed(() => `h${props.level}`);
