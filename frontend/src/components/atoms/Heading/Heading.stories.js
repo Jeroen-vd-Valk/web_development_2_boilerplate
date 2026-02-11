@@ -1,17 +1,17 @@
-import Heading from './Heading.vue';
+import Heading from "./Heading.vue";
 
 export default {
-  title: 'Atoms/Heading',
+  title: "Atoms/Heading",
   component: Heading,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     level: {
-      control: { type: 'select' },
+      control: { type: "select" },
       options: [1, 2, 3, 4, 5, 6],
     },
     size: {
-      control: { type: 'select' },
-      options: ['auto', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'],
+      control: { type: "select" },
+      options: ["auto", "sm", "md", "lg", "xl", "2xl", "3xl"],
     },
   },
 };
@@ -19,7 +19,7 @@ export default {
 export const H1 = {
   args: {
     level: 1,
-    children: 'Heading 1',
+    children: "Heading 1",
   },
   render: (args) => ({
     components: { Heading },

@@ -9,51 +9,56 @@
             </a>
           </Heading>
         </div>
-        
+
         <nav class="hidden md:flex space-x-8">
-          <a 
-            v-for="link in navigationLinks" 
+          <a
+            v-for="link in navigationLinks"
             :key="link.name"
-            :href="link.href" 
+            :href="link.href"
             class="text-gray-700 hover:text-blue-600 transition-colors font-medium"
           >
             {{ link.name }}
           </a>
         </nav>
-        
+
         <div class="md:hidden">
-          <button 
+          <button
             @click="mobileMenuOpen = !mobileMenuOpen"
             class="text-gray-700 hover:text-blue-600 transition-colors"
             aria-label="Toggle menu"
           >
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path 
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
                 v-if="!mobileMenuOpen"
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
-                d="M4 6h16M4 12h16M4 18h16" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
               />
-              <path 
+              <path
                 v-else
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                stroke-width="2" 
-                d="M6 18L18 6M6 6l12 12" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
               />
             </svg>
           </button>
         </div>
       </div>
-      
+
       <!-- Mobile menu -->
       <div v-if="mobileMenuOpen" class="md:hidden pb-4">
         <nav class="flex flex-col space-y-2">
-          <a 
-            v-for="link in navigationLinks" 
+          <a
+            v-for="link in navigationLinks"
             :key="link.name"
-            :href="link.href" 
+            :href="link.href"
             class="text-gray-700 hover:text-blue-600 transition-colors px-2 py-1"
           >
             {{ link.name }}
@@ -65,17 +70,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import Heading from '../../atoms/Heading/Heading.vue';
+import { ref } from "vue";
+import Heading from "../../atoms/Heading/Heading.vue";
 
 defineProps({
   navigationLinks: {
     type: Array,
     default: () => [
-      { name: 'Home', href: '/' },
-      { name: 'Articles', href: '/articles' },
-      { name: 'About', href: '/about' },
-      { name: 'Contact', href: '/contact' },
+      { name: "Home", href: "/" },
+      { name: "Articles", href: "/articles" },
+      { name: "About", href: "/about" },
+      { name: "Contact", href: "/contact" },
     ],
   },
 });
