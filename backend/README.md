@@ -131,6 +131,20 @@ Import the `Articles_API.postman_collection.json` file into Postman to test all 
   - Database: `developmentdb`
 - **phpmyadmin**: Database management interface (port 8080)
 
+## Composer
+
+Composer is installed. To run commands, run them through the docker container (containers must be running):
+
+```bash
+docker-compose exec php composer ...
+```
+
+Install a package:
+
+```bash
+docker-compose exec php composer require chillerlan/php-qrcode
+```
+
 ## Data Storage
 
 Currently, the application uses JSON file-based storage (`app/src/data/articles.json`) for demonstration purposes. In production, this should be replaced with a proper database implementation.
