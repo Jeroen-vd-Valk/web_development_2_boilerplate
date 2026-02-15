@@ -19,7 +19,13 @@ class ArticleController extends Controller
     public function getAll()
     {
         try {
-            $articles = $this->articleService->getAll();
+            // Parse page parameter from GET query string
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            if ($page !== null && $page < 1) {
+                $page = 1; // Default page number
+            }
+
+            $articles = $this->articleService->getAll($page);
             return $this->sendSuccessResponse($articles);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);

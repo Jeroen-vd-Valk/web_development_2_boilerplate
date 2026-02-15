@@ -8,7 +8,7 @@ namespace App\Repositories;
 use App\Models\Article;
 use App\Utils\JsonStore;
 
-class ArticleRepository implements IArticleRepository
+class ArticleRepositoryJson implements IArticleRepository
 {
     private JsonStore $store;
     private const DATA_FILE = __DIR__ . '/../data/articles.json';
@@ -19,11 +19,31 @@ class ArticleRepository implements IArticleRepository
     }
 
     /**
+     * Get all articles with optional pagination
+     * @param int|null $limit Maximum number of articles to return (null for all)
+     * @param int|null $offset Number of articles to skip (null for no offset)
      * @return Article[]
      */
-    public function getAll(): array
+    public function getAll(?int $limit = null, ?int $offset = null): array
     {
-        return $this->store->getAll();
+        $allArticles = $this->store->getAll();
+        
+        // If no pagination parameters provided, return all
+        if ($limit === null && $offset === null) {
+            return $allArticles;
+        }
+        
+        // Apply offset
+        if ($offset !== null && $offset > 0) {
+            $allArticles = array_slice($allArticles, $offset);
+        }
+        
+        // Apply limit
+        if ($limit !== null && $limit > 0) {
+            $allArticles = array_slice($allArticles, 0, $limit);
+        }
+        
+        return $allArticles;
     }
 
     public function getById(int $id): ?Article
