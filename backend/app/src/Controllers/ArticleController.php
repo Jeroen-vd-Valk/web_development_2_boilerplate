@@ -19,14 +19,7 @@ class ArticleController extends Controller
     public function getAll()
     {
         try {
-            // Parse page parameter from GET query string
-            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            if ($page !== null && $page < 1) {
-                $page = 1; // Default page number
-            }
-
-            $articles = $this->articleService->getAll($page);
-            return $this->sendSuccessResponse($articles);
+            return $this->sendSuccessResponse([]);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
@@ -38,9 +31,6 @@ class ArticleController extends Controller
             $id = (int)($vars['id'] ?? 0);
             $article = $this->articleService->getById($id);
             
-            if (!$article) {
-                return $this->sendErrorResponse('Article not found', 404);
-            }
             return $this->sendSuccessResponse($article);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
@@ -51,37 +41,16 @@ class ArticleController extends Controller
     {
         try {
             $article = $this->mapPostDataToClass(Article::class);
-            $article = $this->articleService->create($article);
-            return $this->sendSuccessResponse($article, 201);
+            return $this->sendSuccessResponse([], 201);
         } catch (\Exception $e) {
-            var_dump($e->getMessage());
             return $this->sendErrorResponse('Internal server error', 500);
         }
     }
 
     public function update($vars = [])
     {
-        try {
-            $article = $this->mapPostDataToClass(Article::class);
-            $id = (int)($vars['id'] ?? 0);
-            $article->id = $id;
-            $this->articleService->update($article);
-            return $this->sendSuccessResponse($article);
-        } catch (\Exception $e) {
-            return $this->sendErrorResponse('Internal server error', 500);
-        }
     }
 
-    public function delete($vars = [])
-    {
-        try {
-            $id = (int)($vars['id'] ?? 0);
-            $this->articleService->delete($id);
-            return $this->sendSuccessResponse();
-        } catch (\Exception $e) {
-            return $this->sendErrorResponse('Internal server error', 500);
-        }
-    }
 
 
 }

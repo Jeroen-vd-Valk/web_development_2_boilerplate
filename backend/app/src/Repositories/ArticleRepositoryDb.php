@@ -43,24 +43,9 @@ class ArticleRepositoryDb implements IArticleRepository
     {
         try {
             $sql = "SELECT * FROM " . self::TABLE_NAME . " ORDER BY id ASC";
-            
-            // Add pagination if limit is provided
-            if ($limit !== null) {
-                $sql .= " LIMIT :limit";
-                if ($offset !== null) {
-                    $sql .= " OFFSET :offset";
-                }
-            }
-            
+        
             $stmt = $this->pdo->prepare($sql);
-            
-            if ($limit !== null) {
-                $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
-                if ($offset !== null) {
-                    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-                }
-            }
-            
+                
             $stmt->execute();
             $rows = $stmt->fetchAll();
             
