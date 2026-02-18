@@ -26,18 +26,23 @@ backend/
 ## API Endpoints
 
 ### Get All Articles
+
 ```
 GET /articles
 ```
+
 Returns a list of all articles.
 
 ### Get Article by ID
+
 ```
 GET /articles/{id}
 ```
+
 Returns a specific article by its ID.
 
 ### Create Article
+
 ```
 POST /articles
 Content-Type: application/json
@@ -50,9 +55,11 @@ Content-Type: application/json
     "content": "Article content here"
 }
 ```
+
 Creates a new article and returns it with the assigned ID.
 
 ### Update Article
+
 ```
 PUT /articles/{id}
 Content-Type: application/json
@@ -66,12 +73,15 @@ Content-Type: application/json
     "content": "Updated content"
 }
 ```
+
 Updates an existing article by ID.
 
 ### Delete Article
+
 ```
 DELETE /articles/{id}
 ```
+
 Deletes an article by ID.
 
 ## Getting Started
@@ -83,23 +93,27 @@ Deletes an article by ID.
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 cd backend
 ```
 
 2. Start the Docker containers:
+
 ```bash
 docker-compose up
 ```
 
-3. Install PHP dependencies:
+3. Run composer commands:
+
 ```bash
-docker-compose exec php composer install
+docker-compose exec php composer [...]
 ```
 
 ### Running the Application
 
 The application will be available at:
+
 - **API**: http://localhost
 - **phpMyAdmin**: http://localhost:8080
 
