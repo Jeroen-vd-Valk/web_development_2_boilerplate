@@ -19,7 +19,14 @@ class ArticleController extends Controller
     public function getAll()
     {
         try {
-            return $this->sendSuccessResponse([]);
+            $page = null;
+
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }
+
+            $articles = $this->articleService->getAll($page);
+            return $this->sendSuccessResponse($articles);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
@@ -30,7 +37,11 @@ class ArticleController extends Controller
         try {
             $id = (int)($vars['id'] ?? 0);
             $article = $this->articleService->getById($id);
-            
+
+            if (!isset($article)) {
+                return $this->sendErrorResponse('Item not found', 404);
+            }
+
             return $this->sendSuccessResponse($article);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
@@ -47,10 +58,5 @@ class ArticleController extends Controller
         }
     }
 
-    public function update($vars = [])
-    {
-    }
-
-
-
+    public function update($vars = []) {}
 }

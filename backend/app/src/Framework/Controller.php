@@ -4,9 +4,7 @@ namespace App\Framework;
 
 class Controller
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     protected function sendSuccessResponse($data = [], $code = 200)
     {
@@ -34,7 +32,7 @@ class Controller
         $data = json_decode($input, true);
 
         $instance = new $className();
-        
+
         foreach ($data as $key => $value) {
             if (property_exists($instance, $key)) {
                 $instance->$key = $value;
