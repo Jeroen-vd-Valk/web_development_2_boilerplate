@@ -2,25 +2,25 @@
 
 namespace App\Controllers;
 
-use App\Models\Article;
-use App\Services\IArticleService;
-use App\Services\ArticleService;
+use App\Models\Product;
+use App\Services\IProductService;
+use App\Services\ProductService;
 use App\Framework\Controller;
 
-class ArticleController extends Controller
+class ProductController extends Controller
 {
-    private IArticleService $articleService;
+    private IProductService $productService;
 
     public function __construct()
     {
-        $this->articleService = new ArticleService();
+        $this->productService = new ProductService();
     }
 
     public function getAll()
     {
         try {
-            $articles = $this->articleService->getAll();
-            return $this->sendSuccessResponse($articles);
+            $products = $this->productService->getAll();
+            return $this->sendSuccessResponse($products);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
@@ -30,12 +30,12 @@ class ArticleController extends Controller
     {
         try {
             $id = (int)($vars['id'] ?? 0);
-            $article = $this->articleService->getById($id);
+            $product = $this->productService->getById($id);
             
-            if (!$article) {
-                return $this->sendErrorResponse('Article not found', 404);
+            if (!$product) {
+                return $this->sendErrorResponse('Product not found', 404);
             }
-            return $this->sendSuccessResponse($article);
+            return $this->sendSuccessResponse($product);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
@@ -44,9 +44,9 @@ class ArticleController extends Controller
     public function create()
     {
         try {
-            $article = $this->mapPostDataToClass(Article::class);
-            $article = $this->articleService->create($article);
-            return $this->sendSuccessResponse($article, 201);
+            $product = $this->mapPostDataToClass(Product::class);
+            $product = $this->productService->create($product);
+            return $this->sendSuccessResponse($product, 201);
         } catch (\Exception $e) {
             var_dump($e->getMessage());
             return $this->sendErrorResponse('Internal server error', 500);
@@ -56,11 +56,11 @@ class ArticleController extends Controller
     public function update($vars = [])
     {
         try {
-            $article = $this->mapPostDataToClass(Article::class);
+            $product = $this->mapPostDataToClass(Product::class);
             $id = (int)($vars['id'] ?? 0);
-            $article->id = $id;
-            $this->articleService->update($article);
-            return $this->sendSuccessResponse($article);
+            $product->id = $id;
+            $this->productService->update($product);
+            return $this->sendSuccessResponse($product);
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
@@ -70,12 +70,10 @@ class ArticleController extends Controller
     {
         try {
             $id = (int)($vars['id'] ?? 0);
-            $this->articleService->delete($id);
+            $this->productService->delete($id);
             return $this->sendSuccessResponse();
         } catch (\Exception $e) {
             return $this->sendErrorResponse('Internal server error', 500);
         }
     }
-
-
 }

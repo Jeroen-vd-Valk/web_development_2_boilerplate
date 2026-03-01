@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Home & Living",
+        "description": "Sustainable products for your home including lighting, bedding, and home accessories"
+    },
+    {
+        "id": 2,
+        "name": "Personal Care & Wellness",
+        "description": "Eco-friendly personal care items, yoga accessories, and wellness products"
+    },
+    {
+        "id": 3,
+        "name": "Electronics",
+        "description": "Sustainable electronic devices and energy-efficient technology"
+    },
+    {
+        "id": 4,
+        "name": "Fashion & Accessories",
+        "description": "Sustainable fashion items, bags, and accessories made from eco-friendly materials"
+    },
+    {
+        "id": 5,
+        "name": "Food & Kitchen",
+        "description": "Reusable kitchen products, food storage solutions, and sustainable dining items"
+    }
+]

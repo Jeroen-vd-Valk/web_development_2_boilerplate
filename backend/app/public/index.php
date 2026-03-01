@@ -36,12 +36,21 @@ use function FastRoute\simpleDispatcher;
  * Define the routes for the application.
  */
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-    // Article routes
-    $r->addRoute('GET', '/articles', ['App\Controllers\ArticleController', 'getAll']);
-    $r->addRoute('GET', '/articles/{id}', ['App\Controllers\ArticleController', 'get']);
-    $r->addRoute('POST', '/articles', ['App\Controllers\ArticleController', 'create']);
-    $r->addRoute('PUT', '/articles/{id}', ['App\Controllers\ArticleController', 'update']);
-    $r->addRoute('DELETE', '/articles/{id}', ['App\Controllers\ArticleController', 'delete']);
+
+    
+    // Product routes
+    $r->addRoute('GET', '/products', ['App\Controllers\ProductController', 'getAll']);
+    $r->addRoute('GET', '/products/{id}', ['App\Controllers\ProductController', 'get']);
+    $r->addRoute('POST', '/products', ['App\Controllers\ProductController', 'create']);
+    $r->addRoute('PUT', '/products/{id}', ['App\Controllers\ProductController', 'update']);
+    $r->addRoute('DELETE', '/products/{id}', ['App\Controllers\ProductController', 'delete']);
+    
+    // Category routes
+    $r->addRoute('GET', '/categories', ['App\Controllers\CategoryController', 'getAll']);
+    $r->addRoute('GET', '/categories/{id}', ['App\Controllers\CategoryController', 'get']);
+    $r->addRoute('POST', '/categories', ['App\Controllers\CategoryController', 'create']);
+    $r->addRoute('PUT', '/categories/{id}', ['App\Controllers\CategoryController', 'update']);
+    $r->addRoute('DELETE', '/categories/{id}', ['App\Controllers\CategoryController', 'delete']);
 });
 
 

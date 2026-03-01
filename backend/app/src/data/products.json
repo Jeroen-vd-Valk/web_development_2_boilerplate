@@ -1,0 +1,170 @@
+[
+    {
+        "id": 1,
+        "name": "Stainless Steel Water Bottle - Premium",
+        "price": 34.99,
+        "description": "Updated description for eco-friendly reusable water bottle. Now with improved insulation.",
+        "category_id": 1,
+        "category": null
+    },
+    {
+        "id": 2,
+        "name": "Bamboo Toothbrush",
+        "price": 8.99,
+        "description": "Bamboo toothbrush with soft bristles and biodegradable handle. Each brush comes in recyclable packaging. Sustainable alternative to plastic toothbrushes.",
+        "category_id": 2,
+        "category": null
+    },
+    {
+        "id": 3,
+        "name": "Solar-Powered Portable Charger",
+        "price": 45,
+        "description": "Solar-powered portable charger with 10,000mAh capacity. Features fast charging technology and built-in LED flashlight. Perfect for outdoor adventures and reducing grid energy consumption.",
+        "category_id": 3,
+        "category": null
+    },
+    {
+        "id": 4,
+        "name": "Organic Cotton Tote Bag",
+        "price": 29.99,
+        "description": "Organic cotton tote bag made from GOTS certified cotton. Durable, washable, and perfect for grocery shopping. Replaces hundreds of single-use plastic bags.",
+        "category_id": 4,
+        "category": null
+    },
+    {
+        "id": 5,
+        "name": "Compostable Bamboo Cutlery Set",
+        "price": 12.99,
+        "description": "Compostable bamboo cutlery set including fork, knife, and spoon. Lightweight and perfect for picnics, camping, or takeout. Fully biodegradable in commercial composting facilities.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 6,
+        "name": "LED Energy-Efficient Light Bulbs",
+        "price": 18.5,
+        "description": "LED energy-efficient light bulbs, pack of 4. Uses 80% less energy than traditional incandescent bulbs and lasts 25 times longer. Dimmable and available in warm white.",
+        "category_id": 1,
+        "category": null
+    },
+    {
+        "id": 7,
+        "name": "Reusable Silicone Food Storage Bags",
+        "price": 15.99,
+        "description": "Reusable silicone food storage bags, set of 5. Dishwasher safe, freezer safe, and microwave safe. Eliminates the need for single-use plastic bags.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 8,
+        "name": "Organic Hemp Yoga Mat",
+        "price": 32,
+        "description": "Organic hemp yoga mat made from sustainable hemp fiber. Non-slip surface with natural rubber backing. Free from harmful chemicals and PVC.",
+        "category_id": 2,
+        "category": null
+    },
+    {
+        "id": 9,
+        "name": "Recycled Glass Food Containers",
+        "price": 19.99,
+        "description": "Recycled glass food containers with bamboo lids, set of 3. Oven-safe, microwave-safe, and freezer-safe. Made from 100% post-consumer recycled glass.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 10,
+        "name": "Fair Trade Organic Cotton T-Shirt",
+        "price": 39.99,
+        "description": "Fair trade organic cotton t-shirt. Made from GOTS certified organic cotton with low-impact dyes. Supports sustainable farming practices and ethical labor standards.",
+        "category_id": 4,
+        "category": null
+    },
+    {
+        "id": 11,
+        "name": "Beeswax Food Wraps",
+        "price": 14.99,
+        "description": "Beeswax food wraps, set of 3 different sizes. Natural alternative to plastic wrap. Made from organic cotton, beeswax, tree resin, and jojoba oil. Washable and reusable for up to a year.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 12,
+        "name": "Bamboo Fiber Bath Towels",
+        "price": 27.5,
+        "description": "Bamboo fiber bath towels, set of 2. Ultra-soft and highly absorbent. Naturally antimicrobial and made from sustainably sourced bamboo. Machine washable and long-lasting.",
+        "category_id": 2,
+        "category": null
+    },
+    {
+        "id": 13,
+        "name": "Solar-Powered Outdoor String Lights",
+        "price": 55,
+        "description": "Solar-powered outdoor string lights with 50 LED bulbs. Weather-resistant and automatically turns on at dusk. Powered by built-in solar panel, no electricity needed.",
+        "category_id": 1,
+        "category": null
+    },
+    {
+        "id": 14,
+        "name": "Stainless Steel Straw Set",
+        "price": 22.99,
+        "description": "Stainless steel straw set with cleaning brush and carrying case. Includes 4 straight and 4 bent straws. Reusable alternative to plastic straws, dishwasher safe.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 15,
+        "name": "Organic Cotton Produce Bags",
+        "price": 16.99,
+        "description": "Organic cotton produce bags, set of 5 mesh bags. Lightweight and breathable for fruits and vegetables. Washable and perfect for zero-waste grocery shopping.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 16,
+        "name": "Recycled Polyester Backpack",
+        "price": 48,
+        "description": "Recycled polyester backpack made from plastic bottles. Water-resistant, multiple compartments, and ergonomic design. Each bag repurposes approximately 12 plastic bottles.",
+        "category_id": 4,
+        "category": null
+    },
+    {
+        "id": 17,
+        "name": "Natural Loofah Sponge",
+        "price": 11.99,
+        "description": "Natural loofah sponge for body and face. 100% biodegradable and compostable. Grown without pesticides, naturally exfoliating and long-lasting when properly cared for.",
+        "category_id": 2,
+        "category": null
+    },
+    {
+        "id": 18,
+        "name": "Cork Yoga Block Set",
+        "price": 35.99,
+        "description": "Cork yoga block set of 2. Made from sustainably harvested cork, naturally antimicrobial and moisture-resistant. Lightweight yet durable, perfect for yoga practice.",
+        "category_id": 2,
+        "category": null
+    },
+    {
+        "id": 19,
+        "name": "Reusable Coffee Cup",
+        "price": 21.5,
+        "description": "Reusable coffee cup made from recycled materials. Double-wall insulation, leak-proof lid, and fits standard car cup holders. Reduces waste from disposable coffee cups.",
+        "category_id": 5,
+        "category": null
+    },
+    {
+        "id": 20,
+        "name": "Organic Cotton Bed Sheets",
+        "price": 42.99,
+        "description": "Organic cotton bed sheets, set includes flat sheet, fitted sheet, and 2 pillowcases. Made from GOTS certified organic cotton with OEKO-TEX certified dyes. Soft, breathable, and sustainable.",
+        "category_id": 1,
+        "category": null
+    },
+    {
+        "id": 21,
+        "name": "Stainless Steel Water Bottle",
+        "price": 29.99,
+        "description": "Eco-friendly reusable water bottle made from stainless steel. Keeps drinks cold for 24 hours.",
+        "category_id": 1,
+        "category": null
+    }
+]

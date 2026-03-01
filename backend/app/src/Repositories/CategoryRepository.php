@@ -5,41 +5,41 @@
 
 namespace App\Repositories;
 
-use App\Models\Article;
+use App\Models\Category;
 use App\Utils\JsonStore;
 
-class ArticleRepository implements IArticleRepository
+class CategoryRepository implements ICategoryRepository
 {
     private JsonStore $store;
-    private const DATA_FILE = __DIR__ . '/../data/articles.json';
+    private const DATA_FILE = __DIR__ . '/../data/categories.json';
 
     public function __construct()
     {
-        $this->store = new JsonStore(self::DATA_FILE, Article::class);
+        $this->store = new JsonStore(self::DATA_FILE, Category::class);
     }
 
     /**
-     * @return Article[]
+     * @return Category[]
      */
     public function getAll(): array
     {
         return $this->store->getAll();
     }
 
-    public function getById(int $id): ?Article
+    public function getById(int $id): ?Category
     {
         return $this->store->getById($id);
     }
 
-    public function create(Article $article): Article
+    public function create(Category $category): Category
     {
-        $this->store->create($article);
-        return $article;
+        $this->store->create($category);
+        return $category;
     }
 
-    public function update(Article $article): bool
+    public function update(Category $category): bool
     {
-        return $this->store->update($article);
+        return $this->store->update($category);
     }
 
     public function delete(int $id): bool
