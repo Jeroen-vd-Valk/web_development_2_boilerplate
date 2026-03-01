@@ -47,7 +47,10 @@
         </div>
 
         <!-- Products Grid -->
-        <div v-if="products && products.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          v-if="products && products.length > 0"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           <ProductListItem
             v-for="product in products"
             :key="product.id"
@@ -91,12 +94,14 @@ const fetchProducts = async () => {
   error.value = null;
 
   try {
-    const response = await axios.get(`${config.apiDomain}/products`);
-    products.value = response.data;
+    // fetch products from API
+    // update data
   } catch (err) {
     console.error("Error fetching products:", err);
     error.value =
-      err.response?.data?.message || err.message || "Failed to load products. Please try again later.";
+      err.response?.data?.message ||
+      err.message ||
+      "Failed to load products. Please try again later.";
     products.value = [];
   } finally {
     loading.value = false;
@@ -107,18 +112,8 @@ const fetchProducts = async () => {
  * Handle product deletion
  */
 const handleDelete = async (productId) => {
-  if (!confirm("Are you sure you want to delete this product?")) {
-    return;
-  }
-
-  try {
-    await axios.delete(`${config.apiDomain}/products/${productId}`);
-    // Remove product from list
-    products.value = products.value.filter(p => p.id !== productId);
-  } catch (err) {
-    console.error("Error deleting product:", err);
-    alert("Failed to delete product. Please try again.");
-  }
+  // TODO: send DELETE request to API
+  // on success, refetch products
 };
 
 // Fetch products when component is mounted

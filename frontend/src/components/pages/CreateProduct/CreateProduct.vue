@@ -6,9 +6,13 @@
           Create New Product
         </h1>
 
-        <form @submit.prevent="handleSubmit" class="space-y-6">
+        <!-- TODO: handle form submit -->
+        <form class="space-y-6">
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              for="name"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
               Product Name *
             </label>
             <input
@@ -22,7 +26,10 @@
           </div>
 
           <div>
-            <label for="price" class="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              for="price"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
               Price *
             </label>
             <input
@@ -38,7 +45,10 @@
           </div>
 
           <div>
-            <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              for="description"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
               Description *
             </label>
             <textarea
@@ -52,7 +62,10 @@
           </div>
 
           <div>
-            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">
+            <label
+              for="category_id"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
               Category *
             </label>
             <select
@@ -64,15 +77,18 @@
               <option value="" disabled>Select a category</option>
               <option
                 v-for="category in categories"
-                :key="category.id"
-                :value="category.id"
+                <!-- TODO: add a key -->
+                <!-- TODO: add a value -->
               >
-                {{ category.name }}
+                TODO: display category name
               </option>
             </select>
           </div>
 
-          <div v-if="error" class="bg-red-50 border border-red-200 rounded-lg p-4">
+          <div
+            v-if="error"
+            class="bg-red-50 border border-red-200 rounded-lg p-4"
+          >
             <p class="text-red-800 text-sm">{{ error }}</p>
           </div>
 
@@ -82,7 +98,7 @@
               :disabled="loading"
               class="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {{ loading ? 'Saving...' : 'Create Product' }}
+              {{ loading ? "Saving..." : "Create Product" }}
             </button>
             <router-link
               to="/"
@@ -98,17 +114,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
-import axios from 'axios';
-import config from '../../../config.js';
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+import config from "../../../config.js";
 
 const router = useRouter();
 
 const form = ref({
-  name: '',
+  name: "",
   price: 0,
-  description: '',
+  description: "",
   category_id: 1,
 });
 
@@ -123,35 +139,15 @@ const baseUrl = config.apiDomain;
  */
 const fetchCategories = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/categories`);
-    categories.value = response.data;
-    // Set default category_id if categories exist
-    if (categories.value.length > 0) {
-      form.value.category_id = categories.value[0].id;
-    }
+    // TODO: fetch categories from API
+    // TODO: update categories data
   } catch (err) {
-    console.error('Error fetching categories:', err);
+    console.error("Error fetching categories:", err);
     // Don't set error state for category fetch failure, just log it
   }
 };
 
-/**
- * Handle form submission
- */
-const handleSubmit = async () => {
-  loading.value = true;
-  error.value = null;
-
-  try {
-    await axios.post(`${baseUrl}/products`, form.value);
-    router.push('/');
-  } catch (err) {
-    console.error('Error saving product:', err);
-    error.value = err.response?.data?.message || err.message || 'Failed to save product. Please try again.';
-  } finally {
-    loading.value = false;
-  }
-};
+// TODO: implement form submission handler
 
 onMounted(() => {
   fetchCategories();
