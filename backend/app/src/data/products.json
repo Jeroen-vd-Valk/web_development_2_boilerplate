@@ -166,5 +166,13 @@
         "description": "Eco-friendly reusable water bottle made from stainless steel. Keeps drinks cold for 24 hours.",
         "category_id": 1,
         "category": null
+    },
+    {
+        "id": 22,
+        "name": "test product update",
+        "price": 99,
+        "description": "blah blah",
+        "category_id": 5,
+        "category": null
     }
 ]

@@ -1,96 +1,80 @@
+import axios from 'axios';
 import config from '../config.js';
 
 /**
  * API Utility Functions
  * 
- * Helper functions for making API requests using the app configuration
+ * Helper functions for making API requests using axios
  */
 
-/**
- * Build the full API URL for an endpoint
- * @param {string} endpoint - API endpoint (e.g., '/articles')
- * @returns {string} Full API URL
- */
-function buildApiUrl(endpoint) {
-  const baseUrl = config.apiDomain.replace(/\/$/, ''); // Remove trailing slash
-  const path = endpoint.replace(/^\//, ''); // Remove leading slash from endpoint
-  return `${baseUrl}/${path}`;
-}
+// Create axios instance with base configuration
+const apiClient = axios.create({
+  baseURL: config.apiDomain, // Remove trailing slash
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 /**
  * Make a GET request to the API
- * @param {string} endpoint - API endpoint (e.g., '/articles')
- * @param {RequestInit} options - Fetch options
- * @returns {Promise<Response>}
+ * @param {string} endpoint - API endpoint (e.g., '/products')
+ * @param {object} options - Axios options
+ * @returns {Promise} Axios response data
  */
 export async function get(endpoint, options = {}) {
-  const url = buildApiUrl(endpoint);
-  return fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-  });
+  try {
+    const response = await apiClient.get(endpoint, options);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
  * Make a POST request to the API
  * @param {string} endpoint - API endpoint
  * @param {object} data - Request body data
- * @param {RequestInit} options - Fetch options
- * @returns {Promise<Response>}
+ * @param {object} options - Axios options
+ * @returns {Promise} Axios response data
  */
 export async function post(endpoint, data, options = {}) {
-  const url = buildApiUrl(endpoint);
-  return fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    body: JSON.stringify(data),
-    ...options,
-  });
+  try {
+    const response = await apiClient.post(endpoint, data, options);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
  * Make a PUT request to the API
  * @param {string} endpoint - API endpoint
  * @param {object} data - Request body data
- * @param {RequestInit} options - Fetch options
- * @returns {Promise<Response>}
+ * @param {object} options - Axios options
+ * @returns {Promise} Axios response data
  */
 export async function put(endpoint, data, options = {}) {
-  const url = buildApiUrl(endpoint);
-  return fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    body: JSON.stringify(data),
-    ...options,
-  });
+  try {
+    const response = await apiClient.put(endpoint, data, options);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
  * Make a DELETE request to the API
  * @param {string} endpoint - API endpoint
- * @param {RequestInit} options - Fetch options
- * @returns {Promise<Response>}
+ * @param {object} options - Axios options
+ * @returns {Promise} Axios response data
  */
 export async function del(endpoint, options = {}) {
-  const url = buildApiUrl(endpoint);
-  return fetch(url, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    ...options,
-  });
+  try {
+    const response = await apiClient.delete(endpoint, options);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
@@ -99,5 +83,7 @@ export async function del(endpoint, options = {}) {
  * @returns {string} Full API URL
  */
 export function getApiUrl(endpoint) {
-  return buildApiUrl(endpoint);
+  const baseUrl = config.apiDomain;
+  const path = endpoint.replace(/^\//, '');
+  return `${baseUrl}/${path}`;
 }
