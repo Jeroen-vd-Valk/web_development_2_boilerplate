@@ -10,4 +10,5 @@ interface IAuthService
     public function register(User $user): User;
     public function getUserFromToken(string $token): ?User;
     public function generateToken(User $user): string;
+    public function validateToken(string $token): bool;
 }

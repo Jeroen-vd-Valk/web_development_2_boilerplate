@@ -27,6 +27,7 @@ class AuthController extends Controller
                 return $this->sendErrorResponse('Email and password are required', 400);
             }
 
+            // call the auth service to authenticate the user
             $user = $this->authService->authenticate($data['email'], $data['password']);
 
             if (!$user) {
@@ -73,20 +74,18 @@ class AuthController extends Controller
     public function currentUser()
     {
         try {
-            // Get token from Authorization header
-            $headers = getallheaders();
-            $authHeader = $headers['Authorization'] ?? $headers['authorization'] ?? null;
 
-            if (!$authHeader) {
+            // Get token from Authorization header
+            if(!isset($_SERVER['HTTP_AUTHORIZATION'])) {
                 return $this->sendErrorResponse('Authorization header is required', 401);
             }
 
-            // Extract token from "Bearer <token>" format
-            if (preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
-                $token = $matches[1];
-            } else {
+            $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+            $headerParts = explode(' ', $authHeader);
+            if (count($headerParts) !== 2 || strtolower($headerParts[0]) !== 'bearer') {
                 return $this->sendErrorResponse('Invalid authorization header format', 401);
             }
+            $token = $headerParts[1];
 
             $user = $this->authService->getUserFromToken($token);
 
@@ -94,7 +93,7 @@ class AuthController extends Controller
                 return $this->sendErrorResponse('Invalid or expired token', 401);
             }
 
-            // Return user data (excluding password for security)
+            // Return user DTO
             $userDTO = new UserDTO($user);
             return $this->sendSuccessResponse($userDTO);
         } catch (\Exception $e) {

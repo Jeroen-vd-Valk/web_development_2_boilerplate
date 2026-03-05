@@ -39,12 +39,44 @@ class AuthService implements IAuthService
 
     public function generateToken(User $user): string
     {
+        $now = time();
+        $expiration = $now + (Config::$tokenExpirationHours * 3600); // Convert hours to seconds
+        
         $payload = [
-            'id' => $user->id,
-            'email' => $user->email,
-            'username' => $user->username
+            'iss' => Config::$domain, // Issuer
+            'aud' => Config::$domain, // Audience
+            'iat' => $now, // Issued at
+            'nbf' => $now, // Not before
+            'exp' => $expiration, // Expiration time (24 hours from now)
+            'data' => [
+                'id' => $user->id,
+                'email' => $user->email,
+                'username' => $user->username
+            ],
         ];
+        
         return JWT::encode($payload, Config::$secretKey, self::JWT_ALGORITHM);
+    }
+
+    public function validateToken(string $token): bool
+    {
+        try {
+            $decoded = JWT::decode($token, new Key(Config::$secretKey, self::JWT_ALGORITHM));
+            
+            // Validate required claims
+            if (!isset($decoded->iss) || !isset($decoded->aud) || !isset($decoded->exp)) {
+                return false;
+            }
+            
+            // Validate issuer and audience match domain
+            if ($decoded->iss !== Config::$domain || $decoded->aud !== Config::$domain) {
+                return false;
+            }
+            
+            return true;
+        } catch (\Exception $e) {
+            return false; // Invalid token
+        }
     }
 
     public function getUserFromToken(string $token): ?User
@@ -56,8 +88,8 @@ class AuthService implements IAuthService
         }
 
         // Get user by ID from the decoded token
-        if (isset($decoded->id)) {
-            return $this->userRepository->getById($decoded->id);
+        if (isset($decoded->data->id)) {
+            return $this->userRepository->getById($decoded->data->id);
         }
 
         return null;        
