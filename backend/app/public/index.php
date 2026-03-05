@@ -36,12 +36,10 @@ use function FastRoute\simpleDispatcher;
  * Define the routes for the application.
  */
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-    // Article routes
-    $r->addRoute('GET', '/articles', ['App\Controllers\ArticleController', 'getAll']);
-    $r->addRoute('GET', '/articles/{id}', ['App\Controllers\ArticleController', 'get']);
-    $r->addRoute('POST', '/articles', ['App\Controllers\ArticleController', 'create']);
-    $r->addRoute('PUT', '/articles/{id}', ['App\Controllers\ArticleController', 'update']);
-    $r->addRoute('DELETE', '/articles/{id}', ['App\Controllers\ArticleController', 'delete']);
+    // Auth routes
+    $r->addRoute('POST', '/auth/login', ['App\Controllers\AuthController', 'login']);
+    $r->addRoute('POST', '/auth/register', ['App\Controllers\AuthController', 'register']);
+    $r->addRoute('GET', '/auth/me', ['App\Controllers\AuthController', 'currentUser']);
 });
 
 
