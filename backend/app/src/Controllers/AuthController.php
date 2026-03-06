@@ -74,7 +74,7 @@ class AuthController extends Controller
     public function currentUser()
     {
         try {
-
+            // Note: generally authentication/authorization code should normally be centralized somewhere (e.g. middleware, base controller, etc.). This is handled inline here for simplicity and demonstration purposes.
             // Get token from Authorization header
             if(!isset($_SERVER['HTTP_AUTHORIZATION'])) {
                 return $this->sendErrorResponse('Authorization header is required', 401);

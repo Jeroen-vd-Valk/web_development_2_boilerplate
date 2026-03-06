@@ -42,20 +42,19 @@ class AuthService implements IAuthService
         $now = time();
         $expiration = $now + (Config::$tokenExpirationHours * 3600); // Convert hours to seconds
         
+        // This payload still needs an iss (issuer) and aud (audience set)
+        // The payload also need a data property containing the user id, username and email
         $payload = [
-            'iss' => Config::$domain, // Issuer
-            'aud' => Config::$domain, // Audience
-            'iat' => $now, // Issued at
+            'iss' => null, // TODO: Issuer (available in the Config class as the domain property)
+            'aud' => null, // TODO: Issuer (available in the Config class as the domain property)
+            'iat' => $now, // Issued at time
             'nbf' => $now, // Not before
             'exp' => $expiration, // Expiration time (24 hours from now)
-            'data' => [
-                'id' => $user->id,
-                'email' => $user->email,
-                'username' => $user->username
-            ],
+            // TODO: Add a data property containing the user id, username and email
         ];
         
-        return JWT::encode($payload, Config::$secretKey, self::JWT_ALGORITHM);
+        // TODO: Encode and return the token using the secret key and the HS256 algorithm `self::JWT_ALGORITHM`
+        return "";
     }
 
     public function validateToken(string $token): bool
@@ -81,16 +80,17 @@ class AuthService implements IAuthService
 
     public function getUserFromToken(string $token): ?User
     {
-        try { 
-            $decoded = JWT::decode($token, new Key(Config::$secretKey, self::JWT_ALGORITHM));
+        try {
+            // TODO: Decode the token and return the user from the database based on the user id in the token's data property 
+            return null;
         } catch (\Exception $e) {
             return null; // Invalid token
         }
 
         // Get user by ID from the decoded token
-        if (isset($decoded->data->id)) {
-            return $this->userRepository->getById($decoded->data->id);
-        }
+        // if (isset($decoded->data->id)) {
+        //     return $this->userRepository->getById($decoded->data->id);
+        // }
 
         return null;        
     }

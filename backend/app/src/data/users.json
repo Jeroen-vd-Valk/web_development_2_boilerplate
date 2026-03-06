@@ -10,5 +10,11 @@
         "username": "john_doe",
         "email": "john.doe+001@example.com",
         "password": "$2y$12$ORi3QkfYriloY1EZD7RQb.owjyFidghTdPS6\/4P0SwA1AJ0RRPC2C"
+    },
+    {
+        "id": 3,
+        "username": "john_doe",
+        "email": "john.doe+002@example.com",
+        "password": "$2y$12$8RmDLT9eI7sLTjBCcManYOSQzglrca\/INCZz\/oOLq5hJ8hU1V3d2K"
     }
 ]
